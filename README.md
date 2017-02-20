@@ -1,1 +1,1 @@
-# myAlgorithms
+# my personal algorithms
