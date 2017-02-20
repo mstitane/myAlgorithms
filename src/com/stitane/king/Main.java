@@ -8,7 +8,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         while (sc.hasNextLong()) {
             long a = sc.nextLong(), b = sc.nextLong();
-            // solve test case and output answer
             System.out.println(getsDifference(a,b));
         }
         sc.close();
