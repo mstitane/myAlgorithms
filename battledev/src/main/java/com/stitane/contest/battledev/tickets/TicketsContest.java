@@ -3,7 +3,7 @@ package com.stitane.contest.battledev.tickets;
 import java.util.Scanner;
 
 public class TicketsContest {
-    // FIXME not work yet
+    // not work yet
     public static void main(String[] argv) throws Exception {
         Scanner sc = new Scanner(System.in);
         int n = Integer.parseInt(sc.nextLine());
