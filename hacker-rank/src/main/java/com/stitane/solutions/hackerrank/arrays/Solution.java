@@ -1,14 +1,19 @@
-package com.stitane.solutions.hackerrank;
+package com.stitane.solutions.hackerrank.arrays;
 
 import java.io.PrintStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.nio.charset.StandardCharsets;
 import java.text.NumberFormat;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Solution {
@@ -16,7 +21,7 @@ public class Solution {
     private Solution() {
     }
 
-    static void plusMinus(int[] arr) {
+    public static void plusMinus(int[] arr) {
         int countPositives = 0;
         int countNegatives = 0;
         int countZero = 0;
@@ -34,7 +39,7 @@ public class Solution {
     }
 
     // Complete the staircase function below.
-    static void staircase(int n) {
+    public static void staircase(int n) {
         int m = n - 1;
         for (int i = 0; i < n; i++) {
             String s = String.join("", Collections.nCopies(m, " "));
@@ -68,6 +73,26 @@ public class Solution {
         out.println("China: " + china);
         out.println("France: " + france);
         out.close();
+    }
+
+    static void hourglassSum(int[][] arr) {
+        Set<Integer> sum = new HashSet<>();
+
+        for (int i = 0; i < arr.length - 2; i++) {
+            for (int j = 0; j < arr.length - 2; j++) {
+                sum.add(arr[i][j] + arr[i][j + 1] + arr[i][j + 2] + arr[i + 1][j + 1] + arr[i + 2][j] + arr[i + 2][j + 1] + arr[i + 2][j + 2]);
+            }
+        }
+
+        sum.stream().max(Comparator.naturalOrder()).ifPresent(System.out::println);
+    }
+
+    static int[] rotLeft(int[] a, int d) {
+        List<Integer> list = Arrays.stream(a).boxed().collect(Collectors.toList());
+
+        Collections.rotate(list, a.length - d);
+
+        return list.stream().mapToInt(i -> i).toArray();
     }
 
 }

@@ -1,5 +1,7 @@
 package com.stitane.solutions.hackerrank;
 
+import com.stitane.solutions.hackerrank.arrays.Solution;
+
 import org.junit.Assert;
 import org.junit.Test;
 
