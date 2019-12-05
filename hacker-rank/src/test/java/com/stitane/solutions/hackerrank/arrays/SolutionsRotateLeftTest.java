@@ -7,12 +7,12 @@ import java.util.Scanner;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static com.stitane.solutions.hackerrank.arrays.Solution.rotLeft;
+import static com.stitane.solutions.hackerrank.arrays.Solutions.rotLeft;
 
-public class SolutionRotateLeftTest {
+public class SolutionsRotateLeftTest {
 
     @Test
-    public void test() throws IOException {
+    public void test() {
         int[] expected = { 5, 1, 2, 3, 4 };
         String in = "5 4\n" + "1 2 3 4 5";
         Scanner scanner = new Scanner(in);

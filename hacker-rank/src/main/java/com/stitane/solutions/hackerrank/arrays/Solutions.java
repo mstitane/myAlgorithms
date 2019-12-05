@@ -1,6 +1,7 @@
 package com.stitane.solutions.hackerrank.arrays;
 
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.nio.charset.StandardCharsets;
@@ -16,9 +17,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Solution {
+public class Solutions {
 
-    private Solution() {
+    private Solutions() {
     }
 
     public static void plusMinus(int[] arr) {
@@ -56,7 +57,7 @@ public class Solution {
         System.out.print(minSum + " " + maxSum);
     }
 
-    static void currencyCode() {
+    static void currencyCode() throws UnsupportedEncodingException {
         Scanner scanner = new Scanner(System.in);
         double payment = scanner.nextDouble();
         scanner.close();
@@ -67,7 +68,7 @@ public class Solution {
         String india = currencyInstance.format(payment).replace("$", "Rs.");
         String china = NumberFormat.getCurrencyInstance(Locale.CHINA).format(payment);
         String france = NumberFormat.getCurrencyInstance(Locale.FRANCE).format(payment);
-        PrintStream out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
+        PrintStream out = new PrintStream(System.out, true, StandardCharsets.UTF_8.name());
         out.println("US: " + us);
         out.println("India: " + india);
         out.println("China: " + china);

@@ -1,21 +1,23 @@
 package com.stitane.solutions.hackerrank;
 
-import com.stitane.solutions.hackerrank.arrays.Solution;
+import com.stitane.solutions.hackerrank.arrays.Solutions;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SolutionTest {
+public class SolutionsTest {
 
     @Test
     public void plusMinus() {
-        Solution.plusMinus(new int[] { 1, 2 });
+        Solutions.plusMinus(new int[] { 1, 2 });
         Assert.assertTrue(true);
     }
 
     @Test
     public void staircase() {
-        Solution.staircase(6);
+        Solutions.staircase(6);
         Assert.assertTrue(true);
     }
+
+
 }
