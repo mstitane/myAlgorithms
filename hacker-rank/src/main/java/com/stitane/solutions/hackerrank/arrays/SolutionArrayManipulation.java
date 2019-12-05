@@ -1,26 +1,39 @@
 package com.stitane.solutions.hackerrank.arrays;
 
-import java.util.stream.IntStream;
-
 public class SolutionArrayManipulation {
 
     private SolutionArrayManipulation() {
     }
 
+    static void update(long[] arrayD, int l, int r, long x) {
+        arrayD[l] += x;
+        arrayD[r + 1] -= x;
+    }
+
     static long arrayManipulation(int n, int[][] queries) {
         long[] array = new long[n];
-        final long[] max = { 0 };
+        long[] arrayD = new long[n + 1];
         for (int[] query : queries) {
             int a = query[0] - 1;
             int b = query[1] - 1;
             long k = query[2];
-            IntStream.rangeClosed(a, b).forEach(i -> {
-            long plus = array[i] + k;
-            array[i] = plus;
-            if (plus > max[0])
-                max[0] = plus;
-            });
+            update(arrayD, a, b, k);
         }
-        return max[0];
+        return getMaxValue(array, arrayD);
+    }
+
+    private static long getMaxValue(long[] array, long[] arrayD) {
+        long max = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (i == 0) {
+                array[i] = arrayD[i];
+            } else {
+                array[i] = arrayD[i] + array[i - 1];
+            }
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+        return max;
     }
 }
