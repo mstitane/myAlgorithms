@@ -10,7 +10,7 @@ public class SolutionArrayManipulation {
         arrayD[r + 1] -= x;
     }
 
-    static long arrayManipulation(int n, int[][] queries) {
+    public static long arrayManipulation(int n, int[][] queries) {
         long[] array = new long[n];
         long[] arrayD = new long[n + 1];
         for (int[] query : queries) {
