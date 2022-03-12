@@ -1,7 +1,9 @@
-package com.stitane.solutions.hackerrank.arrays;
+package com.stitane.solutions.hackerrank;
 
+import java.util.Objects;
 import java.util.Scanner;
 
+import com.stitane.solutions.hackerrank.arrays.SolutionArrayManipulation;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -37,7 +39,7 @@ public class SolutionArrayManipulationTest {
     @Test
     public void testShouldReturn7542539201() {
         long expected = 7542539201L;
-        Scanner scanner = new Scanner(getClass().getResourceAsStream("/arrays/input04.txt"));
+        Scanner scanner = new Scanner(Objects.requireNonNull(getClass().getResourceAsStream("/arrays/input04.txt")));
         String[] nm = scanner.nextLine().split(" ");
 
         int n = Integer.parseInt(nm[0]);
@@ -63,7 +65,7 @@ public class SolutionArrayManipulationTest {
     @Test
     public void testShouldReturn2497169732() {
         long expected = 2497169732L;
-        Scanner scanner = new Scanner(getClass().getResourceAsStream("/arrays/input07.txt"));
+        Scanner scanner = new Scanner(Objects.requireNonNull(getClass().getResourceAsStream("/arrays/input07.txt")));
         String[] nm = scanner.nextLine().split(" ");
 
         int n = Integer.parseInt(nm[0]);

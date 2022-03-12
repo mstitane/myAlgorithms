@@ -88,7 +88,7 @@ public class Solutions {
         sum.stream().max(Comparator.naturalOrder()).ifPresent(System.out::println);
     }
 
-    static int[] rotLeft(int[] a, int d) {
+    public static int[] rotLeft(int[] a, int d) {
         List<Integer> list = Arrays.stream(a).boxed().collect(Collectors.toList());
 
         Collections.rotate(list, a.length - d);

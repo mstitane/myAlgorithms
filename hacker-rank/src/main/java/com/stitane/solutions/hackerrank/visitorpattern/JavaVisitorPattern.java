@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ public class JavaVisitorPattern {
     public static Tree solve() {
         //read the tree from STDIN and return its root as a return value of this function
         InputStream in = JavaVisitorPattern.class.getResourceAsStream("/testCase1.txt");
-        Scanner scan = new Scanner(in);
+        Scanner scan = new Scanner(Objects.requireNonNull(in));
         int n = scan.nextInt();
 
         values = new int[n];
@@ -33,18 +34,10 @@ public class JavaVisitorPattern {
             int u = scan.nextInt();
             int v = scan.nextInt();
 
-            Set<Integer> parentEdges = map.get(u);
-            if (parentEdges == null) {
-                parentEdges = new HashSet<>();
-                map.put(u, parentEdges);
-            }
+            Set<Integer> parentEdges = map.computeIfAbsent(u, k -> new HashSet<>());
             parentEdges.add(v);
 
-            Set<Integer> childEdges = map.get(v);
-            if (childEdges == null) {
-                childEdges = new HashSet<>();
-                map.put(v, childEdges);
-            }
+            Set<Integer> childEdges = map.computeIfAbsent(v, k -> new HashSet<>());
             childEdges.add(u);
         }
         scan.close();

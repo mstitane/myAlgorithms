@@ -1,6 +1,5 @@
-package com.stitane.solutions.hackerrank.arrays;
+package com.stitane.solutions.hackerrank;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 

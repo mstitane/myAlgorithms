@@ -2,9 +2,9 @@ package com.stitane.solutions.hackerrank.visitorpattern;
 
 abstract class Tree {
 
-    private int value;
-    private Color color;
-    private int depth;
+    private final int value;
+    private final Color color;
+    private final int depth;
 
     public Tree(int value, Color color, int depth) {
         this.value = value;
