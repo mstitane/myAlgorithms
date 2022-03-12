@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class TicketsContest {
     // not work yet
-    public static void main(String[] argv) throws Exception {
+    public static void main(String[] argv) {
         Scanner sc = new Scanner(System.in);
         int n = Integer.parseInt(sc.nextLine());
         int count = 0;

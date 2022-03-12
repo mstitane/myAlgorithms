@@ -6,9 +6,9 @@ import java.io.PrintStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Objects;
 
 import com.stitane.contest.battledev.gym.GymPassword;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -26,7 +26,7 @@ public class GymPasswordTest {
 
         GymPassword.main(new String[] {});
 
-        String fileOut = Files.readAllLines(Paths.get(out.toURI())).get(0);
+        String fileOut = Files.readAllLines(Paths.get(Objects.requireNonNull(out).toURI())).get(0);
         Assert.assertEquals("out not equals : ", consoleOut.toString().trim(), fileOut);
 
     }
