@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import com.stitane.solutions.hackerrank.dynamic_array.Result;
+import com.stitane.solutions.hackerrank.arrays.Solutions;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ public class SolutionsDynamicArrayTest {
 
     @Test
     public void test() throws IOException {
-        int[] expected = { 7, 3};
+        int[] expected = { 7, 3 };
         String in = "2 5\n" + "1 0 5\n" + "1 1 7\n" + "1 0 3\n" + "2 1 0\n" + "2 1 1";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(in));
         // Set the standard output to use newConsole.
@@ -44,7 +44,7 @@ public class SolutionsDynamicArrayTest {
             }
         });
 
-        List<Integer> result = Result.dynamicArray(n, queries);
+        List<Integer> result = Solutions.dynamicArray(n, queries);
 
         Assert.assertArrayEquals(expected, result.stream().mapToInt(Integer::intValue).toArray());
     }

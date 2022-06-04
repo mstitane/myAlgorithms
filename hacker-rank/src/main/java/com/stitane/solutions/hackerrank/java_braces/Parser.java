@@ -3,36 +3,38 @@ package com.stitane.solutions.hackerrank.java_braces;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-class Parser {
-    static String isBalanced(String s) {
+public class Parser {
+
+    private Parser(){}
+    public static String isBalanced(String s) {
+        final String NO = "NO";
+        final String YES = "YES";
         Deque<Character> stack = new ArrayDeque<>();
         char x;
-
-        // Traversing the Expression
         for (Character c : s.toCharArray()) {
-            if (c == '(' || c == '{') {
+            if (c == '(' || c == '{' || c == '[') {
                 stack.push(c);
                 continue;
             }
             if (stack.isEmpty()) {
-                return String.valueOf(false);
+                return NO;
             }
             x = stack.getFirst();
 
-            switch (c) {
-            case ')':
+            if (c == ')') {
                 stack.pop();
-                if (x == '{')
-                    return String.valueOf(false);
-                break;
-
-            case '}':
+                if (x == '{' || x == '[')
+                    return NO;
+            } else if (c == '}') {
                 stack.pop();
-                if (x == '(')
-                    return String.valueOf(false);
-                break;
+                if (x == '(' || x == '[')
+                    return NO;
+            } else if (c == ']') {
+                stack.pop();
+                if (x == '(' || x == '{')
+                    return NO;
             }
         }
-        return String.valueOf(stack.isEmpty());
+        return stack.isEmpty() ? YES : NO;
     }
 }

@@ -3,7 +3,7 @@ package com.stitane.solutions.hackerrank;
 import java.util.Objects;
 import java.util.Scanner;
 
-import com.stitane.solutions.hackerrank.arrays.SolutionArrayManipulation;
+import com.stitane.solutions.hackerrank.arrays.Solutions;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -32,7 +32,7 @@ public class SolutionArrayManipulationTest {
             }
         }
 
-        long result = SolutionArrayManipulation.arrayManipulation(n, queries);
+        long result = Solutions.arrayManipulation(n, queries);
         assertEquals(200, result);
     }
 
@@ -58,7 +58,7 @@ public class SolutionArrayManipulationTest {
             }
         }
 
-        long result = SolutionArrayManipulation.arrayManipulation(n, queries);
+        long result = Solutions.arrayManipulation(n, queries);
         assertEquals(expected, result);
     }
 
@@ -84,7 +84,7 @@ public class SolutionArrayManipulationTest {
             }
         }
 
-        long result = SolutionArrayManipulation.arrayManipulation(n, queries);
+        long result = Solutions.arrayManipulation(n, queries);
         assertEquals(expected, result);
     }
 }

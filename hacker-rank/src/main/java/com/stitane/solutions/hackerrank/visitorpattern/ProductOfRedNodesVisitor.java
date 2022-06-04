@@ -1,9 +1,8 @@
 package com.stitane.solutions.hackerrank.visitorpattern;
 
-class ProductOfRedNodesVisitor implements TreeVis {
+public class ProductOfRedNodesVisitor implements TreeVis {
+    private final int modulo = (int) Math.pow(10, 9) + 7;
     private long redLeaves = 1;
-
-    private final int modulo = (int) Math.pow(10 , 9) + 7;
 
     public int getResult() {
         return (int) redLeaves;

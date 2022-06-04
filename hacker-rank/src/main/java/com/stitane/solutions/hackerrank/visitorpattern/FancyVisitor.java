@@ -1,6 +1,6 @@
 package com.stitane.solutions.hackerrank.visitorpattern;
 
-class FancyVisitor implements TreeVis {
+public class FancyVisitor implements TreeVis {
     private int evenNodeDepthSum;
     private int sumOfGreenLeaves;
 
