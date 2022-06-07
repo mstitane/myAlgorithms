@@ -7,9 +7,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.SortedMap;
@@ -165,5 +167,59 @@ public class Solutions {
             }
         }
         return aList;
+    }
+
+    public static List<Integer> contacts(List<List<String>> queries) {
+        Map<String, Integer> counter = new HashMap<>();
+        List<Integer> result = new ArrayList<>();
+        for (List<String> query : queries) {
+            String action = query.get(0);
+            String word = query.get(1);
+            if ("add".equals(action)) {
+                StringBuilder key = new StringBuilder();
+                for (Character s : word.toCharArray()) {
+                    key.append(s);
+                    counter.merge(key.toString(), 1, Integer::sum);
+                }
+            } else if ("find".equals(action)) {
+                result.add(counter.getOrDefault(word, 0));
+            }
+        }
+        return result;
+    }
+
+    public static List<Double> runningMedian(List<Integer> integers) {
+        List<Double> result = new ArrayList<>();
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+
+        for (Integer v : integers) {
+            if (maxHeap.isEmpty() || (v < maxHeap.peek())) {
+                maxHeap.offer(v);
+            } else {
+                minHeap.offer(v);
+            }
+
+            if (maxHeap.size() > (minHeap.size() + 1)) {
+                minHeap.offer(maxHeap.poll());
+            }
+
+            if (minHeap.size() > (maxHeap.size() + 1)) {
+                maxHeap.offer(minHeap.poll());
+            }
+
+            if (maxHeap.size() > minHeap.size()) {
+                BigDecimal value = BigDecimal.valueOf(maxHeap.peek());
+                result.add(value.setScale(1, RoundingMode.HALF_UP).doubleValue());
+            } else if (minHeap.size() > maxHeap.size()) {
+                BigDecimal value = BigDecimal.valueOf(minHeap.peek());
+                result.add(value.setScale(1, RoundingMode.HALF_UP).doubleValue());
+            } else if (!minHeap.isEmpty()) {
+                BigDecimal value = BigDecimal.valueOf(0.5 * (minHeap.peek() + maxHeap.peek()));
+                result.add(value.setScale(1, RoundingMode.HALF_UP).doubleValue());
+            }
+        }
+
+        return result;
     }
 }
