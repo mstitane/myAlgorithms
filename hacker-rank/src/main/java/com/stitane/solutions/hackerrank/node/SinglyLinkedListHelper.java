@@ -1,7 +1,5 @@
 package com.stitane.solutions.hackerrank.node;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Deque;
@@ -12,16 +10,16 @@ public class SinglyLinkedListHelper {
     private SinglyLinkedListHelper() {
     }
 
-    public static void printList(SinglyLinkedListNode node, String sep, BufferedWriter bufferedWriter) throws IOException {
+    public static String printList(SinglyLinkedListNode node, String sep) {
+        StringBuilder out = new StringBuilder();
         while (node != null) {
-            bufferedWriter.write(String.valueOf(node.data));
-
+            out.append(node.data);
             node = node.next;
-
             if (node != null) {
-                bufferedWriter.write(sep);
+                out.append(sep);
             }
         }
+        return out.toString();
     }
 
     public static SinglyLinkedListNode insertNodeAtPosition(SinglyLinkedListNode head, int data, int position) {
@@ -37,18 +35,6 @@ public class SinglyLinkedListHelper {
         }
         return root;
 
-    }
-
-    public static void printSinglyLinkedList(SinglyLinkedListNode node, String sep, BufferedWriter bufferedWriter) throws IOException {
-        while (node != null) {
-            bufferedWriter.write(String.valueOf(node.data));
-
-            node = node.next;
-
-            if (node != null) {
-                bufferedWriter.write(sep);
-            }
-        }
     }
 
     public static SinglyLinkedListNode mergeLists(SinglyLinkedListNode h1, SinglyLinkedListNode h2) {
@@ -95,5 +81,22 @@ public class SinglyLinkedListHelper {
             linkedList.insertNode(q.poll());
         }
         return linkedList.head;
+    }
+
+    public static SinglyLinkedListNode insertNodeAtTail(SinglyLinkedListNode head, int data) {
+        SinglyLinkedListNode root = head;
+        if (head == null)
+            return new SinglyLinkedListNode(data);
+        while (head.next != null) {
+            head = head.next;
+        }
+        head.next = new SinglyLinkedListNode(data);
+        return root;
+    }
+
+    public static SinglyLinkedListNode insertNodeAtHead(SinglyLinkedListNode llist, int data) {
+        SinglyLinkedListNode node = new SinglyLinkedListNode(data);
+        node.next = llist;
+        return node;
     }
 }
