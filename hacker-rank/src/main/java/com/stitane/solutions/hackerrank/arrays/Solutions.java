@@ -3,10 +3,12 @@ package com.stitane.solutions.hackerrank.arrays;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -218,6 +220,26 @@ public class Solutions {
                 BigDecimal value = BigDecimal.valueOf(0.5 * (minHeap.peek() + maxHeap.peek()));
                 result.add(value.setScale(1, RoundingMode.HALF_UP).doubleValue());
             }
+        }
+
+        return result;
+    }
+
+    public static List<Integer> getMax(List<String> operations) {
+        Deque<Integer> stack = new ArrayDeque<>();
+        PriorityQueue<Integer> max = new PriorityQueue<>(Comparator.reverseOrder());
+        List<Integer> result = new ArrayList<>();
+        for (String operation : operations) {
+            String[] items = operation.split(" ");
+            if ("1".equals(items[0])) {
+                int val = Integer.parseInt(items[1]);
+                stack.push(val);
+                max.add(val);
+            } else if ("2".equals(items[0])) {
+                Integer val = stack.pop();
+                max.remove(val);
+            } else
+                result.add(max.peek());
         }
 
         return result;
