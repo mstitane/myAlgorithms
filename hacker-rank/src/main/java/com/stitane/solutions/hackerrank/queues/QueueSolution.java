@@ -1,5 +1,7 @@
 package com.stitane.solutions.hackerrank.queues;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.Optional;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class QueueSolution {
     private QueueSolution() {
@@ -42,6 +45,7 @@ public class QueueSolution {
 
     /**
      * https://www.hackerrank.com/challenges/one-week-preparation-kit-queue-using-two-stacks/problem
+     *
      * @param source an input string
      * @return an output
      */
@@ -86,5 +90,34 @@ public class QueueSolution {
             return -1;
         else
             return ix;
+    }
+
+    public static List<Integer> waiter(List<Integer> number, int q) {
+        List<Integer> answers = new ArrayList<>();
+        Stack<Integer> stack = new Stack<>();
+        number.forEach(stack::push);
+        Integer prime = 0;
+        while (q-- > 0) {
+            Stack<Integer> stackA = new Stack<>();
+            Stack<Integer> stackB = new Stack<>();
+            prime = new BigInteger(String.valueOf(prime)).nextProbablePrime().intValue();
+            System.out.println(prime);
+            while (!stack.isEmpty()) {
+                Integer integer = stack.pop();
+                if (integer % prime == 0) {
+                    stackB.push(integer);
+                } else
+                    stackA.push(integer);
+            }
+
+            while (!stackB.isEmpty()) {
+                answers.add(stackB.pop());
+            }
+            stack = stackA;
+        }
+        while (!stack.isEmpty()) {
+            answers.add(stack.pop());
+        }
+        return answers;
     }
 }
